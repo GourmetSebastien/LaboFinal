@@ -5,7 +5,7 @@ namespace ClasseMetier
     public class Animateur:Personne
     {
         private string gsm;
-        private bool ars;
+        private string fonction;
 
         public string Gsm
         {
@@ -13,10 +13,10 @@ namespace ClasseMetier
             set => gsm = value;
         }
 
-        public bool Ars
+        public string Fonction
         {
-            get => ars;
-            set => ars = value;
+            get => fonction;
+            set => fonction = value;
         }
 
         public Animateur()
@@ -24,17 +24,17 @@ namespace ClasseMetier
             
         }
 
-        public Animateur(string no, string pre, DateTime date, string address, string gsm) : base(
+        public Animateur(string no, string pre, DateTime date, string address, string gsm,string fonction) : base(
              no, pre, date, address)
         {
             Gsm = gsm;
-            Ars = false;
+            Fonction= fonction;
         }
         public override string ToString()
         {
             string formatDate = Datenaissance.ToString("dd MMMM yyyy",CultureInfo.CreateSpecificCulture("fr-FR"));
 
-            return "Animateur :\n" + "\nNom :" + Nom + "\nPrenom :" + Prenom +
+            return "Animateur :\n" + "\nNom :" + Nom + "\nPrenom :" + Prenom + "\nFonction :"+Fonction+
                    "\nDate de naissance :" +
                    formatDate + "\nAdresse :" + Adresse + "\nGsm :" + Gsm + "\n";
         }

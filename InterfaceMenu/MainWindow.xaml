@@ -5,32 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfaceMenu"
         mc:Ignorable="d"
-        Title="Gestion section loup" Height="800" Width="1280" WindowStartupLocation="CenterScreen"  Icon="/icon-removebg-preview.png">
+        Title="Gestion section loup" Height="800" Width="1480" WindowStartupLocation="CenterScreen"  Icon="/icon-removebg-preview.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="9*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="0" Margin="5,0,5,0">
+        <StackPanel Name="StackPanelGauche" Grid.Column="0" Grid.Row="0" Margin="5,0,5,0">
             <Image Source="/R-removebg-preview.png"/>
-            <Button Content="Liste animé" Height="30" FontSize="16"/>
-            <Button Content="Liste animateur" Height="30" FontSize="16"/>
+            <Button Content="Liste animé" Height="30" FontSize="16" Click="ButtonBase_OnClickListeAnime"/>
+            <Button Content="Liste animateur" Height="30" FontSize="16" Click="ButtonBase_OnClickListeAnimateur"/>
         </StackPanel>
 
-        <Grid Grid.Column="1" Grid.Row="0" Margin="0,0,5,5">
+        <Grid Name="GridAffichegrille" Grid.Column="1" Grid.Row="0" Margin="0,0,5,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="95*"/>
             </Grid.RowDefinitions>
             
-            <Grid>
+            <Grid Name="GridFiltre">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="9*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Name="StackPanelFiltreListe" Orientation="Horizontal">
+                <StackPanel Grid.Column="0" Name="StackPanelFiltre" Orientation="Horizontal">
                     <Label Content="Filtrer par :"/>
                     <ComboBox Width="120" Height="27" Margin="0,0,0,16" SelectedIndex="0" >
                         <ComboBoxItem Content="Aucun"/>
@@ -38,24 +38,39 @@
                         <ComboBoxItem Content="Année"/>
                     </ComboBox>
                 </StackPanel>
-                <Button Grid.Column="1" Content="Ajouter un animé" Height="27" />
+                <Button Name="ButtonAjout" Grid.Column="1" Content="Ajouter un animé" Height="27" />
             </Grid>
 
             <ListView Name="ListViewAnime" Grid.Row="1" ItemsSource="{Binding}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Nom" Width="60" DisplayMemberBinding="{Binding nom}"/>
-                        <GridViewColumn Header="Prenom" Width="60" DisplayMemberBinding="{Binding prenom}"/>
+                        <GridViewColumn Header="Nom" Width="70" DisplayMemberBinding="{Binding nom}"/>
+                        <GridViewColumn Header="Prenom" Width="70" DisplayMemberBinding="{Binding prenom}"/>
                         <GridViewColumn Header="Date de naissance" Width="120" DisplayMemberBinding="{Binding datenaissance}"/>
                         <GridViewColumn Header="Adresse" Width="150" DisplayMemberBinding="{Binding adresse}"/>
-                        <GridViewColumn Header="Pere" Width="60" DisplayMemberBinding="{Binding pere}"/>
+                        <GridViewColumn Header="Pere" Width="70" DisplayMemberBinding="{Binding pere}"/>
                         <GridViewColumn Header="Gsm Pere" Width="100" DisplayMemberBinding="{Binding gsmpere}"/>
-                        <GridViewColumn Header="Mere" Width="60" DisplayMemberBinding="{Binding mere}"/>
+                        <GridViewColumn Header="Mere" Width="70" DisplayMemberBinding="{Binding mere}"/>
                         <GridViewColumn Header="Gsm Mere" Width="100" DisplayMemberBinding="{Binding gsmmere}"/>
                         <GridViewColumn Header="Particularité santé" Width="145" DisplayMemberBinding="{Binding sante}"/>
                         <GridViewColumn Header="Fiche santé" Width="125" DisplayMemberBinding="{Binding fichesante}"/>
                         <GridViewColumn Header="Fiche inscription" Width="100" DisplayMemberBinding="{Binding ficheinscription}"/>
-                        <GridViewColumn Header="Gouter" Width="50" DisplayMemberBinding="{Binding gouter}"/>
+                        <GridViewColumn Header="Gouter" Width="60" DisplayMemberBinding="{Binding gouter}"/>
+                        <GridViewColumn Header="Cotisation" Width="75" DisplayMemberBinding="{Binding cotisation}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <ListView Name="ListViewAnimateur" Grid.Row="1" ItemsSource="{Binding}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nom" Width="70" DisplayMemberBinding="{Binding nom}"/>
+                        <GridViewColumn Header="Prenom" Width="70" DisplayMemberBinding="{Binding prenom}"/>
+                        <GridViewColumn Header="Date de naissance" Width="120" DisplayMemberBinding="{Binding datenaissance}"/>
+                        <GridViewColumn Header="Adresse" Width="150" DisplayMemberBinding="{Binding adresse}"/>
+                        <GridViewColumn Header="Gsm" Width="100" DisplayMemberBinding="{Binding gsm}"/>
+                        <GridViewColumn Header="Fonction" Width="100" DisplayMemberBinding="{Binding fonction}"/>
+                        <GridViewColumn Header="Cotisation" Width="75" DisplayMemberBinding="{Binding cotisation}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

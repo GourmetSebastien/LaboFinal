@@ -23,6 +23,21 @@ namespace InterfaceMenu
         public MainWindow()
         {
             InitializeComponent();
+            ListViewAnimateur.Visibility=Visibility.Hidden;
+        }
+
+        private void ButtonBase_OnClickListeAnime(object sender, RoutedEventArgs e)
+        {
+            ListViewAnimateur.Visibility = Visibility.Hidden;
+            ListViewAnime.Visibility=Visibility.Visible;
+            ButtonAjout.Content = "Ajouter un animé";
+        }
+
+        private void ButtonBase_OnClickListeAnimateur(object sender, RoutedEventArgs e)
+        {
+            ListViewAnimateur.Visibility = Visibility.Visible;
+            ListViewAnime.Visibility = Visibility.Hidden;
+            ButtonAjout.Content = "Ajouter un animateur";
         }
     }
 }
