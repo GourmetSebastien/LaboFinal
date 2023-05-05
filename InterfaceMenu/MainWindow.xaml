@@ -7,23 +7,18 @@
         mc:Ignorable="d"
         Title="Gestion section loup" Height="800" Width="1280" WindowStartupLocation="CenterScreen"  Icon="/icon-removebg-preview.png">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="42*"/>
-            <RowDefinition Height="395*"/>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="9*"/>
         </Grid.ColumnDefinitions>
-        
-        <Image Grid.Column="0" Grid.Row="0" Source="/R-removebg-preview.png"/>
 
-        <StackPanel Grid.Column="0" Grid.Row="1">
+        <StackPanel Grid.Column="0" Grid.Row="0" Margin="5,0,5,0">
+            <Image Source="/R-removebg-preview.png"/>
             <Button Content="Liste anime" Height="30" FontSize="16"/>
             <Button Content="Liste animateur" Height="30" FontSize="16"/>
         </StackPanel>
 
-        <Grid Grid.Column="1" Grid.Row="1">
+        <Grid Grid.Column="1" Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="95*"/>
