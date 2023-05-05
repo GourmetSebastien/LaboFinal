@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClasseMetier;
 
 namespace InterfaceMenu
 {
@@ -24,6 +25,13 @@ namespace InterfaceMenu
         {
             InitializeComponent();
             ListViewAnimateur.Visibility=Visibility.Hidden;
+
+            SectionLoup sectionLoup = SectionLoup.Instance;
+
+            sectionLoup.Load();
+
+            ListViewAnimateur.ItemsSource = sectionLoup.ListeAnimateurs;
+            ListViewAnime.ItemsSource = sectionLoup.ListeAnimes;
         }
 
         private void ButtonBase_OnClickListeAnime(object sender, RoutedEventArgs e)

@@ -10,14 +10,6 @@ namespace ClasseMetier
         private string pathAnimes;
         private string pathAnimateurs;
 
-        private SectionLoup()
-        {
-            listeAnimes=new List<Anime>();
-            listeAnimateurs=new List<Animateur>();
-            pathAnimes = "C:\\CreationProg\\Data\\SectionLoup\\ListeAnime.xml";
-            pathAnimateurs = "C:\\CreationProg\\Data\\SectionLoup\\ListeAnimateur.xml";
-        }
-
         public static SectionLoup Instance
         {
             get
@@ -27,7 +19,36 @@ namespace ClasseMetier
                 return instance;
             }
         }
+        public string PathAnimes
+        {
+            get => pathAnimes;
+            set => pathAnimes = value;
+        }
 
+        public string PathAnimateurs
+        {
+            get=> pathAnimateurs;
+            set => pathAnimateurs = value;
+        }
+
+        public List<Anime> ListeAnimes
+        {
+            get=> listeAnimes; 
+            set => listeAnimes = value;
+        }
+
+        public List<Animateur> ListeAnimateurs
+        {
+            get=>listeAnimateurs; 
+            set => listeAnimateurs = value;
+        }
+        private SectionLoup()
+        {
+            ListeAnimes = new List<Anime>();
+            ListeAnimateurs = new List<Animateur>();
+            PathAnimes = "C:\\CreationProg\\Data\\SectionLoup\\ListeAnime.xml";
+            PathAnimateurs = "C:\\CreationProg\\Data\\SectionLoup\\ListeAnimateur.xml";
+        }
         public void AjouterAnime(Anime anime)
         {
             listeAnimes.Add(anime);
