@@ -30,7 +30,7 @@
             </Grid.RowDefinitions>
             <StackPanel Name="StackPanelFiltreListe" Grid.Row="0" Orientation="Horizontal">
                 <Label Content="Filtrer par :"/>
-                <ComboBox Width="120" Height="25" Margin="0,0,0,17" SelectedIndex="0" >
+                <ComboBox Width="120" Height="27" Margin="0,0,0,16" SelectedIndex="0" >
                     <ComboBoxItem Content="Aucun"/>
                     <ComboBoxItem Content="Nom"/>
                     <ComboBoxItem Content="Année"/>
@@ -44,11 +44,11 @@
                         <GridViewColumn Header="Date de naissance" Width="120" DisplayMemberBinding="{Binding datenaissance}"/>
                         <GridViewColumn Header="Adresse" Width="150" DisplayMemberBinding="{Binding adresse}"/>
                         <GridViewColumn Header="Pere" Width="60" DisplayMemberBinding="{Binding pere}"/>
-                        <GridViewColumn Header="Gsm Pere" Width="95" DisplayMemberBinding="{Binding gsmpere}"/>
+                        <GridViewColumn Header="Gsm Pere" Width="100" DisplayMemberBinding="{Binding gsmpere}"/>
                         <GridViewColumn Header="Mere" Width="60" DisplayMemberBinding="{Binding mere}"/>
-                        <GridViewColumn Header="Gsm Mere" Width="95" DisplayMemberBinding="{Binding gsmmere}"/>
+                        <GridViewColumn Header="Gsm Mere" Width="100" DisplayMemberBinding="{Binding gsmmere}"/>
                         <GridViewColumn Header="Particularité santé" Width="150" DisplayMemberBinding="{Binding sante}"/>
-                        <GridViewColumn Header="Fiche santé" Width="95" DisplayMemberBinding="{Binding fichesante}"/>
+                        <GridViewColumn Header="Fiche santé" Width="125" DisplayMemberBinding="{Binding fichesante}"/>
                         <GridViewColumn Header="Fiche inscription" Width="100" DisplayMemberBinding="{Binding ficheinscription}"/>
                         <GridViewColumn Header="Gouter" Width="50" DisplayMemberBinding="{Binding gouter}"/>
                     </GridView>
