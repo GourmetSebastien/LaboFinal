@@ -4,9 +4,7 @@ using ClasseMetier;
 
 SectionLoup sectionLoup=SectionLoup.Instance;
 
-
 sectionLoup.Load();
-
 
 sectionLoup.AfficherAllAnimateur();
 sectionLoup.AfficherAllAnime();
