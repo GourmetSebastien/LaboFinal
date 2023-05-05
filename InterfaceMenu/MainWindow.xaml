@@ -5,8 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfaceMenu"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Gestion section loup" Height="800" Width="1280" WindowStartupLocation="CenterScreen">
+    <Grid Width="1280" Height="800">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="395*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
         
+        <Image Grid.Column="0" Grid.Row="0" Source="/R-removebg-preview.png"/>
+
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Button Content="Liste anime" Height="30" FontSize="16"/>
+            <Button Content="Liste animateur" Height="30" FontSize="16"/>
+        </StackPanel>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="95*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Name="StackPanelFiltreListe" Grid.Row="0" Orientation="Horizontal">
+                <Label Content="Filtrer par :"/>
+                <ComboBox Width="120" Height="25" Margin="0,0,0,17" SelectedIndex="0" >
+                    <ComboBoxItem Content="Aucun"/>
+                    <ComboBoxItem Content="Nom"/>
+                    <ComboBoxItem Content="Année"/>
+                </ComboBox>
+            </StackPanel>
+            <ListView Name="ListViewAnime" Grid.Row="1" ItemsSource="{Binding}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nom" Width="60" DisplayMemberBinding="{Binding nom}"/>
+                        <GridViewColumn Header="Prenom" Width="60" DisplayMemberBinding="{Binding prenom}"/>
+                        <GridViewColumn Header="Date de naissance" Width="120" DisplayMemberBinding="{Binding datenaissance}"/>
+                        <GridViewColumn Header="Adresse" Width="150" DisplayMemberBinding="{Binding adresse}"/>
+                        <GridViewColumn Header="Pere" Width="60" DisplayMemberBinding="{Binding pere}"/>
+                        <GridViewColumn Header="Gsm Pere" Width="95" DisplayMemberBinding="{Binding gsmpere}"/>
+                        <GridViewColumn Header="Mere" Width="60" DisplayMemberBinding="{Binding mere}"/>
+                        <GridViewColumn Header="Gsm Mere" Width="95" DisplayMemberBinding="{Binding gsmmere}"/>
+                        <GridViewColumn Header="Particularité santé" Width="150" DisplayMemberBinding="{Binding sante}"/>
+                        <GridViewColumn Header="Fiche santé" Width="95" DisplayMemberBinding="{Binding fichesante}"/>
+                        <GridViewColumn Header="Fiche inscription" Width="100" DisplayMemberBinding="{Binding ficheinscription}"/>
+                        <GridViewColumn Header="Gouter" Width="50" DisplayMemberBinding="{Binding gouter}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
     </Grid>
 </Window>
