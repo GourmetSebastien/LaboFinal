@@ -8,11 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="icon-removebg-preview.png" />
     <None Remove="R-removebg-preview.png" />
     <None Remove="rn_image_picker_lib_temp_7b315bbd-5266-4ee7-8a1c-5599d4519af2.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="icon-removebg-preview.png" />
     <Resource Include="R-removebg-preview.png" />
     <Resource Include="rn_image_picker_lib_temp_7b315bbd-5266-4ee7-8a1c-5599d4519af2.jpg" />
   </ItemGroup>
