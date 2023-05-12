@@ -88,30 +88,34 @@ namespace ClasseMetier
         {
             listeAnimateurs.RemoveAll(a => a.Nom == nom && a.Prenom == prenom);
         }
-        public void Save()
+        public void SaveAnime()
         {
             var serializer = new XmlSerializer(typeof(List<Anime>));
             using (var stream = new FileStream(pathAnimes, FileMode.Create))
             {
                 serializer.Serialize(stream, listeAnimes);
             }
-
-            serializer = new XmlSerializer(typeof(List<Animateur>));
+        }
+        public void SaveAnimateur()
+        {
+            var serializer = new XmlSerializer(typeof(List<Animateur>));
             using (var stream = new FileStream(pathAnimateurs, FileMode.Create))
             {
                 serializer.Serialize(stream, listeAnimateurs);
             }
         }
 
-        public void Load()
+        public void LoadAnime()
         {
             var serializer = new XmlSerializer(typeof(List<Anime>));
             using (var stream = new FileStream(pathAnimes, FileMode.Open))
             {
                 listeAnimes = (List<Anime>)serializer.Deserialize(stream);
             }
-
-            serializer = new XmlSerializer(typeof(List<Animateur>));
+        }
+        public void LoadAnimateur()
+        {
+            var serializer = new XmlSerializer(typeof(List<Animateur>));
             using (var stream = new FileStream(pathAnimateurs, FileMode.Open))
             {
                 listeAnimateurs = (List<Animateur>)serializer.Deserialize(stream);

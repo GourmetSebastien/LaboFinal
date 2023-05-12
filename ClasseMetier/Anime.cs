@@ -82,7 +82,7 @@ namespace ClasseMetier
         {
             string formatDate = Datenaissance.ToString("dd MMMM yyyy", CultureInfo.CreateSpecificCulture("fr-FR"));
 
-            return  "Nom :" + Nom + "Prenom :" + Prenom + "Date de naissance :" +
+            return  "Nom :" + Nom + "\nPrenom :" + Prenom + "\nDate de naissance :" +
                    formatDate + "\nAdresse :" + Adresse + "\nPere :" + Pere +
                    "\nGsm du père:" + Gsmpere + "\nMere :" + Mere + "\nGsm de la mère :" + Gsmmere +
                    "\nParticularité de santé :" + Sante + "\n";

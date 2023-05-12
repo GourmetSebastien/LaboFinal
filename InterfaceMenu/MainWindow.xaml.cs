@@ -28,7 +28,8 @@ namespace InterfaceMenu
 
             SectionLoup sectionLoup = SectionLoup.Instance;
 
-            sectionLoup.Load();
+            sectionLoup.LoadAnimateur();
+            sectionLoup.LoadAnime();
 
             ListViewAnimateur.ItemsSource = sectionLoup.ListeAnimateurs;
             ListViewAnime.ItemsSource = sectionLoup.ListeAnimes;
