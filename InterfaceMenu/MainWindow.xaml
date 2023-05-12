@@ -24,7 +24,7 @@
                 <RowDefinition Height="9*"/>
             </Grid.RowDefinitions>
 
-            <Grid Name="GridFiltre">
+            <Grid Name="GridTrie">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="60*"/>
                     <ColumnDefinition Width="10*"/>
@@ -32,7 +32,7 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Name="StackPanelFiltre" Orientation="Horizontal">
-                    <Label Content="Filtrer par :"/>
+                    <Label Content="Trier par :"/>
                     <ComboBox Width="120" Height="27" Margin="0,0,0,16" SelectedIndex="0" >
                         <ComboBoxItem Content="Aucun"/>
                         <ComboBoxItem Content="Nom"/>
