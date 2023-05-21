@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfaceMenu"
         mc:Ignorable="d"
-        Title="Gestion section loup" Height="600" Width="800" WindowStartupLocation="CenterScreen"  Icon="/icon-removebg-preview.png">
+        Title="Gestion section loup" Height="400" Width="700" WindowStartupLocation="CenterScreen"  Icon="/icon-removebg-preview.png" MinHeight="400" MinWidth="700">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>
@@ -14,51 +14,70 @@
 
         <StackPanel Name="StackPanelGauche" Grid.Column="0" Grid.Row="0" Margin="5,0,5,0">
             <Image Source="/R-removebg-preview.png"/>
-            <Button Content="Liste animé" Height="30" FontSize="16" Click="ButtonBase_OnClickListeAnime"/>
-            <Button Content="Liste animateur" Height="30" FontSize="16" Click="ButtonBase_OnClickListeAnimateur"/>
+            <Button Name="ButtonListeAnime" Content="Liste animé" Height="30" FontSize="16" Click="ButtonBase_OnClickListeAnime" Margin="0,3"/>
+            <Button Name="ButtonListeAnimateur" Content="Liste animateur" Height="30" FontSize="16" Click="ButtonBase_OnClickListeAnimateur" Margin="0,3"/>
+            <Button Name="ButtonPrésence" Content="Présence" Height="30" FontSize="16" Margin="0,3"/>
+            <Button Name="ButtonWeekend1" Content="Weekend 1" Height="30" FontSize="16" Margin="0,3"/>
+            <Button Name="ButtonWeekend2" Content="Weekend 2" Height="30" FontSize="16" Margin="0,3"/>
+            <Button Name="ButtonCamp" Content="Camp" Height="30" FontSize="16" Margin="0,3"/>
         </StackPanel>
 
         <Grid Name="GridAffichegrille" Grid.Column="1" Grid.Row="0" Margin="0,0,5,5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="9*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="80*"/>
             </Grid.RowDefinitions>
 
             <Grid Name="GridTrie">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="60*"/>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="25*"/>
                 </Grid.ColumnDefinitions>
-
-                <StackPanel Grid.Column="0" Name="StackPanelFiltre" Orientation="Horizontal">
-                    <Label Content="Trier par :"/>
-                    <ComboBox Width="120" Height="27" Margin="0,0,0,16" SelectedIndex="0" >
-                        <ComboBoxItem Content="Aucun"/>
-                        <ComboBoxItem Content="Nom"/>
-                        <ComboBoxItem Content="Année"/>
-                    </ComboBox>
+                
+                <StackPanel Grid.Column="0">
+                    <StackPanel Name="StackPanelFiltre" Orientation="Horizontal">
+                        <Label Content="Trier par :"/>
+                        <ComboBox Name="ComboBoxTrie" Width="120" Height="27" Margin="8,0,0,16" SelectedIndex="0" SelectionChanged="TrieChange">
+                            <ComboBoxItem Content="Aucun"/>
+                            <ComboBoxItem Content="Nom"/>
+                            <ComboBoxItem Name="ComboBoxItemAnnee" Content="Année"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Filtrer par :"/>
+                        <ComboBox Name="ComboBoxFiltre" Width="120" Height="27" Margin="0,0,0,16" SelectedIndex="0" >
+                            <ComboBoxItem Content="Aucun"/>
+                            <ComboBoxItem Content="Weekend 1"/>
+                            <ComboBoxItem Content="Weekend 1"/>
+                            <ComboBoxItem Content="Camp"/>
+                            <ComboBoxItem Content="Cotisation"/>
+                            <ComboBoxItem Content="Gouter"/>
+                            <ComboBoxItem Content="Fiche santé"/>
+                        </ComboBox>
+                    </StackPanel>
                 </StackPanel>
+                
                 <Button Grid.Column="1" Name="ButtonDetail" Content="Détails" Height="27" Margin="0,0,5,0"/>
-                <Button Grid.Column="2" Name="ButtonAjout" Content="Ajouter un animé" Height="27"  Margin="0,0,5,0"/>
+                <Button Grid.Column="2" Name="ButtonAjout" Content="Ajouter un animé" Height="27"  Margin="0,0,5,0" Click="ButtonAjout_OnClick"/>
             </Grid>
 
-            <ListView Name="ListViewAnime" Grid.Row="1" ItemsSource="{Binding}">
+            <ListView Name="ListViewAnime" Grid.Row="1">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Nom" Width="80" DisplayMemberBinding="{Binding nom}"/>
-                        <GridViewColumn Header="Prenom" Width="80" DisplayMemberBinding="{Binding prenom}"/>
-                        <GridViewColumn Header="Année" Width="80"/>
+                        <GridViewColumn Header="Nom" Width="150" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Header="Prenom" Width="150" DisplayMemberBinding="{Binding Prenom}"/>
+                        <GridViewColumn Header="Année" Width="150" DisplayMemberBinding="{Binding Annee}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
 
-            <ListView Name="ListViewAnimateur" Grid.Row="1" ItemsSource="{Binding}">
+            <ListView Name="ListViewAnimateur" Grid.Row="1" >
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Nom" Width="80" DisplayMemberBinding="{Binding nom}"/>
-                        <GridViewColumn Header="Prenom" Width="80" DisplayMemberBinding="{Binding prenom}"/>
-                        <GridViewColumn Header="Fonction" Width="100" DisplayMemberBinding="{Binding fonction}"/>
+                        <GridViewColumn Header="Nom" Width="150" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Header="Prenom" Width="150" DisplayMemberBinding="{Binding Prenom}"/>
+                        <GridViewColumn Header="Fonction" Width="150" DisplayMemberBinding="{Binding Fonction}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

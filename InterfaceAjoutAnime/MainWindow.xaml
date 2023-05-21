@@ -5,63 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfaceAjoutAnime"
         mc:Ignorable="d"
-        Title="AjoutAnimé" Height="550" Width="800">
+        Title="AjoutAnimé" Height="450" Width="600" WindowStartupLocation="CenterScreen" Icon="/icon-removebg-preview.png" ResizeMode="NoResize">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="75*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" Text="Nom"/>
-        <TextBlock Grid.Column="0" Grid.Row="1" Text="Prenom"/>
-        <TextBlock Grid.Column="0" Grid.Row="2" Text="Date de naissance"/>
-        <TextBlock Grid.Column="0" Grid.Row="3" Text="Adresse"/>
-        <TextBlock Grid.Column="0" Grid.Row="4" Text="Père"/>
-        <TextBlock Grid.Column="0" Grid.Row="5" Text="Gsm du père"/>
-        <TextBlock Grid.Column="0" Grid.Row="6" Text="Mère"/>
-        <TextBlock Grid.Column="0" Grid.Row="7" Text="Gsm de la mère"/>
-        <TextBlock Grid.Column="0" Grid.Row="8" Text="Fiche santé"/>
-
-        <TextBox Grid.Column="1" Grid.Row="0" Margin="0,5,5,5"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Margin="0,5,5,5"/>
-        <DatePicker Grid.Column="1" Grid.Row="2" Margin="0,5,5,5"/>
-        <Grid Grid.Column="1" Grid.Row="3">
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50*"/>
-                <ColumnDefinition Width="25*"/>
-                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Nom de la rue" TextAlignment="Center"/>
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="Numéro de maison" TextAlignment="Center"/>
-            <TextBlock Grid.Row="0" Grid.Column="2" Text="Localité" TextAlignment="Center"/>
+            <GroupBox Grid.Column="0" Margin="2,0,2,0" Header="Nom" FontSize="14">
+                <TextBox Name="TextBoxNom" Margin="5,0,5,0" Height="18" FontSize="12"/>
+            </GroupBox>
 
-            <TextBox Name="TextBoxNomRue" Grid.Column="0" Grid.Row="1" Margin="0,0,5,0"/>
-            <TextBox Name="TextBoxNumRue" Grid.Column="1" Grid.Row="1" Margin="0,0,5,0"/>
-            <TextBox Name="TextBoxLocalite" Grid.Column="2" Grid.Row="1" Margin="0,0,5,0"/>
+            <GroupBox Grid.Column="1" Margin="2,0,2,0" Header="Prenom" FontSize="14">
+                <TextBox Name="TextBoxPrenom" Margin="5,0,5,0" Height="18" FontSize="12"/>
+            </GroupBox>
         </Grid>
-        <TextBox Name="TextBoxPere" Grid.Column="1" Grid.Row="4" Margin="0,5,5,5"/>
-        <TextBox Name="TextBoxGsmPere" Grid.Column="1" Grid.Row="5" Margin="0,5,5,5"/>
-        <TextBox Name="TextBoxMere" Grid.Column="1" Grid.Row="6" Margin="0,5,5,5"/>
-        <TextBox Name="TextBoxgsmMere" Grid.Column="1" Grid.Row="7" Margin="0,5,5,5"/>
-        <TextBox Name="TextBoxSante" Grid.Column="1" Grid.Row="8" Margin="0,0,5,5"/>
 
-        <Button Name="ButtonAujoutAnime"  Grid.Column="1" Grid.Row="9" Content="Ajouter animé" Margin="5,5,5,5"/>
+        <GroupBox Grid.Row="1" Margin="2,0,2,0" Header="Date de naissance" FontSize="14">
+            <DatePicker Name="DatePickerDateNaissance" Margin="5,0,5,5" FontSize="12"/>
+        </GroupBox>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Grid.Column="0" Margin="2,0,2,0" Header="Père" FontSize="14">
+                <StackPanel>
+                    <Label Content="Nom" FontSize="12"/>
+                    <TextBox Name="TextBoxNomPere" FontSize="12"/>
+                    <Label Content="GSM" FontSize="12"/>
+                    <TextBox Name="TextBoxGSMPere" FontSize="12"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Column="1" Margin="2,0,2,0" Header="Mère" FontSize="14">
+                <StackPanel>
+                    <Label Content="Nom" FontSize="12"/>
+                    <TextBox Name="TextBoxNomMere" FontSize="12"/>
+                    <Label Content="GSM" FontSize="12"/>
+                    <TextBox Name="TextBoxGSMMere" FontSize="12"/>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+
+        <GroupBox Grid.Row="3" Margin="2,0,2,0" Header="Particularité de santé" FontSize="14">
+            <TextBox Name="TextBoxSante" FontSize="12"/>
+        </GroupBox>
+
+        <Button Grid.Row="4" Content="Ajouter l'animé" Width="250" Margin="0,2,0,2"/>
     </Grid>
 </Window>

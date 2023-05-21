@@ -46,17 +46,19 @@ namespace ClasseMetier
         {
             ListeAnimes = new List<Anime>();
             ListeAnimateurs = new List<Animateur>();
-            PathAnimes = "C:\\CreationProg\\Data\\SectionLoup\\ListeAnime.xml";
-            PathAnimateurs = "C:\\CreationProg\\Data\\SectionLoup\\ListeAnimateur.xml";
+            PathAnimes = "F:\\Programme\\Data\\SectionLoup\\ListeAnime.xml";
+            PathAnimateurs = "F:\\Programme\\Data\\SectionLoup\\ListeAnimateur.xml";
         }
         public void AjouterAnime(Anime anime)
         {
-            listeAnimes.Add(anime);
+            if(AnimePresent(anime.Nom,anime.Prenom) == false)
+                listeAnimes.Add(anime);
         }
 
         public void AjouterAnimateur(Animateur animateur)
         {
-            listeAnimateurs.Add(animateur);
+            if(AnimateurPresent(animateur.Nom,animateur.Prenom) == false)
+                listeAnimateurs.Add(animateur);
         }
 
         public Anime RechercherAnime(string nom, string prenom)
@@ -136,6 +138,17 @@ namespace ClasseMetier
             {
                 animateur.Affiche();
             }
+        }
+
+        private bool AnimateurPresent(string nom, string prenom)
+        {
+            bool personneTrouvee = ListeAnimateurs.Any(p => p.Nom.Equals(nom) && p.Prenom.Equals(prenom));
+            return personneTrouvee;
+        }
+        private bool AnimePresent(string nom, string prenom)
+        {
+            bool personneTrouvee = ListeAnimes.Any(p => p.Nom.Equals(nom) && p.Prenom.Equals(prenom));
+            return personneTrouvee;
         }
     }
 }

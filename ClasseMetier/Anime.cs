@@ -13,6 +13,7 @@ namespace ClasseMetier
         private bool fichesante;
         private bool ficheinscription;
         private bool gouter;
+        private int annee;
 
         public string Pere
         {
@@ -62,10 +63,13 @@ namespace ClasseMetier
             set => gouter = value;
         }
 
-        public Anime()
+        public int Annee
         {
-
+            get => annee;
+            set => annee = value;
         }
+        public Anime(){}
+
         public Anime(string no,string pre,DateTime date,string adress,string pere, string gsmpere, string mere, string gsmmere, string sante):base(no,pre,date,adress)
         {
             Pere = pere;
@@ -73,16 +77,18 @@ namespace ClasseMetier
             Mere = mere;
             Gsmmere = gsmmere;
             Sante = sante;
+            this.annee = annee;
             Ficheinscription = false;
             Fichesante=false;
             Gouter=false;
+            Annee = CalculerDifferenceAnnees(date);
         }
 
         public override string ToString()
         {
             string formatDate = Datenaissance.ToString("dd MMMM yyyy", CultureInfo.CreateSpecificCulture("fr-FR"));
 
-            return  "Nom :" + Nom + "\nPrenom :" + Prenom + "\nDate de naissance :" +
+            return  "Nom :" + Nom + "\nPrenom :" + Prenom + "\nAnnée :"+Annee+ "\nDate de naissance :" +
                    formatDate + "\nAdresse :" + Adresse + "\nPere :" + Pere +
                    "\nGsm du père:" + Gsmpere + "\nMere :" + Mere + "\nGsm de la mère :" + Gsmmere +
                    "\nParticularité de santé :" + Sante + "\n";
@@ -91,6 +97,21 @@ namespace ClasseMetier
         public override void Affiche()
         {
             Console.WriteLine(ToString());
+        }
+        private int CalculerDifferenceAnnees(DateTime dateNaissance)
+        {
+            switch ((DateTime.Now.Year - dateNaissance.Year) % 4)
+            {
+                case 0:
+                    return 4;
+                case 1:
+                    return 1;
+                case 2:
+                    return 2;
+                case 3:
+                    return 3;
+            }
+            return -1;
         }
     }
 }

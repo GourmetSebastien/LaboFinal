@@ -5,54 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfaceAjoutAnimateur"
         mc:Ignorable="d"
-        Title="AjouterAnimateur" Height="350" Width="600">
+        Title="AjouterAnimateur" Height="365" Width="600" WindowStartupLocation="CenterScreen" Icon="/icon-removebg-preview.png" ResizeMode="NoResize" >
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="75*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="12*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" Text="Nom"/>
-        <TextBlock Grid.Column="0" Grid.Row="1" Text="Prenom"/>
-        <TextBlock Grid.Column="0" Grid.Row="2" Text="Date de naissance"/>
-        <TextBlock Grid.Column="0" Grid.Row="3" Text="Adresse"/>
-        <TextBlock Grid.Column="0" Grid.Row="4" Text="Gsm"/>
-        <TextBlock Grid.Column="0" Grid.Row="5" Text="Fonction"/>
-
-        <TextBox Name="TextBoxNom" Grid.Column="1" Grid.Row="0" Margin="0,5,5,5"/>
-        <TextBox Name="TextBoxPrenom" Grid.Column="1" Grid.Row="1" Margin="0,5,5,5" />
-        <DatePicker Name="DatePicker" Grid.Column="1" Grid.Row="2" Margin="0,5,5,5"/>
-        <Grid Grid.Column="1" Grid.Row="3">
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50*"/>
-                <ColumnDefinition Width="25*"/>
-                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Nom de la rue" TextAlignment="Center"/>
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="Numéro de maison" TextAlignment="Center"/>
-            <TextBlock Grid.Row="0" Grid.Column="2" Text="Localité" TextAlignment="Center"/>
+            <GroupBox Grid.Column="0" Margin="2,0,2,0" Header="Nom" FontSize="14">
+                <TextBox Name="TextBoxNom" Margin="5,0,5,0" Height="18" FontSize="12"/>
+            </GroupBox>
 
-            <TextBox Name="TextBoxNomRue" Grid.Column="0" Grid.Row="1" Margin="0,0,5,0"/>
-            <TextBox Name="TextBoxNumRue" Grid.Column="1" Grid.Row="1" Margin="0,0,5,0"/>
-            <TextBox Name="TextBoxLocalite" Grid.Column="2" Grid.Row="1" Margin="0,0,5,0"/>
+            <GroupBox Grid.Column="1" Margin="2,0,2,0" Header="Prenom" FontSize="14">
+                <TextBox Name="TextBoxPrenom" Margin="5,0,5,0" Height="18" FontSize="12"/>
+            </GroupBox>
         </Grid>
-        <TextBox Name="TextBoxGsm" Grid.Column="1" Grid.Row="4" Margin="0,5,5,5"/>
-        <TextBox Name="TextBoxFonction" Grid.Column="1" Grid.Row="5" Margin="0,5,5,5"/>
 
-        <Button Name="ButtonAjout" Grid.Column="2" Grid.Row="6" Content="Ajouter animateur" Margin="5,5,5,5"/>
+        <GroupBox Grid.Row="1" Margin="2,0,2,0" Header="Date de naissance" FontSize="14">
+            <DatePicker Name="DatePickerDateNaissance" Margin="5,0,5,5" FontSize="12"/>
+        </GroupBox>
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Grid.Column="0" Margin="2,0,2,0" Header="GSM" FontSize="14">
+                <TextBox Name="TextBoxGSM"/>
+            </GroupBox>
+
+            <GroupBox Grid.Column="1" Margin="2,0,2,0" Header="Fonction" FontSize="14">
+                <ListBox Name="ListBoxFonction">
+                    <ListBoxItem Content="ARS"/>
+                    <ListBoxItem Content="Comptable"/>
+                    <ListBoxItem Content="Pharma"/>
+                    <ListBoxItem Content="Commu"/>
+                </ListBox>
+            </GroupBox>
+        </Grid>
+        
+        <Button Name="ButtonAjout" Grid.Row="3" Content="Ajouter animateur" Width="250" Margin="0,2"/>
     </Grid>
 </Window>
