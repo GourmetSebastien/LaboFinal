@@ -41,6 +41,8 @@ namespace InterfaceMenu
             ComboBoxItemAnnee.Visibility=Visibility.Visible;
             ButtonAjout.Content = "Ajouter un animé";
             ComboBoxTrie.SelectedIndex = 0;
+            ListViewAnime.ItemsSource = sectionLoup.ListeAnimes;
+            ListViewAnime.Items.Refresh();
         }
 
         private void ButtonBase_OnClickListeAnimateur(object sender, RoutedEventArgs e)
@@ -50,6 +52,8 @@ namespace InterfaceMenu
             ComboBoxItemAnnee.Visibility = Visibility.Collapsed;
             ButtonAjout.Content = "Ajouter un animateur";
             ComboBoxTrie.SelectedIndex = 0;
+            ListViewAnimateur.ItemsSource = sectionLoup.ListeAnimateurs;
+            ListViewAnimateur.Items.Refresh();
         }
 
         private void ButtonAjout_OnClick(object sender, RoutedEventArgs e)
@@ -68,29 +72,42 @@ namespace InterfaceMenu
 
         private void TrieChange(object sender, SelectionChangedEventArgs e)
         {
-            List<Anime> animeTrie;
-            List<Animateur> animateurTrie;
+            List<Anime> animeTrie=new List<Anime>();
+            List<Animateur> animateurTrie=new List<Animateur>();
 
-            int choixTri=ComboBoxTrie.SelectedIndex;
-            /*
+            string choixTri=ComboBoxTrie.SelectedItem.ToString();
+
             switch (choixTri)
             {
-                case 0:
-                    if(ButtonAjout.Content == "Ajouter un animateur")
-                        ListViewAnimateur.ItemsSource = sectionLoup.ListeAnimateurs;
-                    else
-                        ListViewAnime.ItemsSource = sectionLoup.ListeAnimes;
-                    break;
-                case 1:
+                case "Aucun":
                     if (ButtonAjout.Content == "Ajouter un animateur")
-                        ListViewAnimateur.ItemsSource = sectionLoup.ListeAnimateurs.OrderBy(item => item.Nom).ToList();
+                    {
+                        ListViewAnimateur.ItemsSource = sectionLoup.ListeAnimateurs;
+                        ListViewAnimateur.Items.Refresh();
+                    }
                     else
-                        ListViewAnime.ItemsSource = sectionLoup.ListeAnimes.OrderBy(item => item.Nom).ToList();
+                    {
+                        ListViewAnime.ItemsSource=sectionLoup.ListeAnimes;
+                        ListViewAnime.Items.Refresh();
+                    }
                     break;
-                case 2:
-                    ListViewAnime.ItemsSource = sectionLoup.ListeAnimes.OrderBy(item => item.Annee).ToList();
+                case "Nom":
+                    if (ButtonAjout.Content == "Ajouter un animateur")
+                    {
+                        ListViewAnimateur.ItemsSource = sectionLoup.ListeAnimateurs.OrderBy(personne => personne.Nom).ToList();
+                        ListViewAnimateur.Items.Refresh();
+                    }
+                    else
+                    {
+                        ListViewAnime.ItemsSource = sectionLoup.ListeAnimes.OrderBy(personne => personne.Nom).ToList();
+                        ListViewAnime.Items.Refresh();
+                    }
                     break;
-            }*/
+                case "Année":
+                    ListViewAnime.ItemsSource = sectionLoup.ListeAnimes.OrderBy(personne => personne.Annee).ToList();
+                    ListViewAnime.Items.Refresh();
+                    break;
+            }
         }
     }
 }

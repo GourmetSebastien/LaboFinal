@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Collections.ObjectModel;
+using System.Xml.Serialization;
 
 namespace ClasseMetier
 {
