@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAnime xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Anime>
+    <Nom>Nahum</Nom>
+    <Prenom>Manu</Prenom>
+    <Datenaissance>2013-04-01T00:00:00</Datenaissance>
+    <Adresse>Bang cock</Adresse>
+    <Weekend1>false</Weekend1>
+    <Weekend2>false</Weekend2>
+    <Camp>false</Camp>
+    <Cotisation>false</Cotisation>
+    <Pere>Mr Nahum</Pere>
+    <Gsmpere>04526541</Gsmpere>
+    <Mere>Ms Nahum</Mere>
+    <Gsmmere>068541441</Gsmmere>
+    <Sante>Japan</Sante>
+    <Fichesante>false</Fichesante>
+    <Ficheinscription>false</Ficheinscription>
+    <Gouter>false</Gouter>
+    <Annee>2</Annee>
+  </Anime>
+  <Anime>
+    <Nom>Geuzaine</Nom>
+    <Prenom>Niels</Prenom>
+    <Datenaissance>2011-07-21T00:00:00</Datenaissance>
+    <Adresse>Hollywood</Adresse>
+    <Weekend1>false</Weekend1>
+    <Weekend2>false</Weekend2>
+    <Camp>false</Camp>
+    <Cotisation>false</Cotisation>
+    <Pere>Mr Geuzaine</Pere>
+    <Gsmpere>05745563</Gsmpere>
+    <Mere>Ms Geuzaine</Mere>
+    <Gsmmere>015241852</Gsmmere>
+    <Sante>Quoicoubait</Sante>
+    <Fichesante>false</Fichesante>
+    <Ficheinscription>false</Ficheinscription>
+    <Gouter>false</Gouter>
+    <Annee>4</Annee>
+  </Anime>
+</ArrayOfAnime>

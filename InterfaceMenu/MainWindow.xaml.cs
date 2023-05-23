@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClasseMetier;
+using Microsoft.VisualBasic;
 
 namespace InterfaceMenu
 {
@@ -72,8 +74,9 @@ namespace InterfaceMenu
 
         private void TrieChange(object sender, SelectionChangedEventArgs e)
         {
-            List<Anime> animeTrie=new List<Anime>();
-            List<Animateur> animateurTrie=new List<Animateur>();
+            ObservableCollection<Anime> animeTrie;
+            ObservableCollection<Animateur> animateurTrie;
+
 
             string choixTri=ComboBoxTrie.SelectedItem.ToString();
 
@@ -94,20 +97,36 @@ namespace InterfaceMenu
                 case "Nom":
                     if (ButtonAjout.Content == "Ajouter un animateur")
                     {
-                        ListViewAnimateur.ItemsSource = sectionLoup.ListeAnimateurs.OrderBy(personne => personne.Nom).ToList();
+                        animateurTrie = new ObservableCollection<Animateur>(sectionLoup.ListeAnimateurs.OrderBy(personne => personne.Nom));
+                        foreach (var animateur in animateurTrie)
+                        {
+                            animateur.Affiche();
+                        }
+                        ListViewAnime.ItemsSource=animateurTrie;
                         ListViewAnimateur.Items.Refresh();
                     }
                     else
                     {
-                        ListViewAnime.ItemsSource = sectionLoup.ListeAnimes.OrderBy(personne => personne.Nom).ToList();
+                        animeTrie = new ObservableCollection<Anime>(sectionLoup.ListeAnimes.OrderBy(personne => personne.Nom));
+                        foreach (var anime in animeTrie)
+                        {
+                            anime.Affiche();
+                        }
+                        ListViewAnime.ItemsSource=animeTrie;
                         ListViewAnime.Items.Refresh();
                     }
                     break;
                 case "Année":
-                    ListViewAnime.ItemsSource = sectionLoup.ListeAnimes.OrderBy(personne => personne.Annee).ToList();
+                    animeTrie = new ObservableCollection<Anime>(sectionLoup.ListeAnimes.OrderBy(personne => personne.Annee));
+                    foreach (var anime in animeTrie)
+                    {
+                        anime.Affiche();
+                    }
+                    ListViewAnime.ItemsSource = animeTrie;
                     ListViewAnime.Items.Refresh();
                     break;
             }
+
         }
     }
 }

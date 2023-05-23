@@ -1,4 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using Microsoft.VisualBasic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 
 namespace ClasseMetier
@@ -6,8 +9,8 @@ namespace ClasseMetier
     public class SectionLoup
     {
         private static SectionLoup instance;
-        private List<Anime> listeAnimes;
-        private List<Animateur> listeAnimateurs;
+        private ObservableCollection<Anime> listeAnimes;
+        private ObservableCollection<Animateur> listeAnimateurs;
         private string pathAnimes;
         private string pathAnimateurs;
 
@@ -32,23 +35,23 @@ namespace ClasseMetier
             set => pathAnimateurs = value;
         }
 
-        public List<Anime> ListeAnimes
+        public ObservableCollection<Anime> ListeAnimes
         {
             get=> listeAnimes; 
             set => listeAnimes = value;
         }
 
-        public List<Animateur> ListeAnimateurs
+        public ObservableCollection<Animateur> ListeAnimateurs
         {
             get=>listeAnimateurs; 
             set => listeAnimateurs = value;
         }
         private SectionLoup()
         {
-            ListeAnimes = new List<Anime>();
-            ListeAnimateurs = new List<Animateur>();
-            PathAnimes = "F:\\Programme\\Data\\SectionLoup\\ListeAnime.xml";
-            PathAnimateurs = "F:\\Programme\\Data\\SectionLoup\\ListeAnimateur.xml";
+            ListeAnimes = new ObservableCollection<Anime>();
+            ListeAnimateurs = new ObservableCollection<Animateur>();
+            PathAnimes = "F:\\Programme\\C#\\LaboFinal\\data\\ListeAnime.xml";
+            PathAnimateurs = "F:\\Programme\\C#\\LaboFinal\\data\\ListeAnimateur.xml";
         }
         public void AjouterAnime(Anime anime)
         {
@@ -64,7 +67,7 @@ namespace ClasseMetier
 
         public Anime RechercherAnime(string nom, string prenom)
         {
-            Anime anime = listeAnimes.Find(a => a.Nom == nom && a.Prenom == prenom);
+            Anime anime = listeAnimes.FirstOrDefault(personne => personne.Nom == nom && personne.Prenom == prenom);
             if (anime == null)
                 Console.WriteLine(nom + " " + prenom + " pas trouver");
             else
@@ -74,7 +77,7 @@ namespace ClasseMetier
 
         public Animateur RechercherAnimateur(string nom, string prenom)
         {
-            Animateur animateur = listeAnimateurs.Find(a => a.Nom == nom && a.Prenom == prenom);
+            Animateur animateur = listeAnimateurs.FirstOrDefault(personne => personne.Nom == nom && personne.Prenom == prenom);
             if (animateur == null)
                 Console.WriteLine(nom + " " + prenom + " pas trouver");
             else
@@ -84,50 +87,58 @@ namespace ClasseMetier
 
         public void SupprimerAnime(string nom, string prenom)
         {
-            listeAnimes.RemoveAll(a => a.Nom == nom && a.Prenom == prenom);
+            Anime anime = listeAnimes.FirstOrDefault(personne => personne.Nom == nom && personne.Prenom == prenom);
+            if(anime != null)
+                ListeAnimes.Remove(anime);
         }
 
         public void SupprimerAnimateur(string nom, string prenom)
         {
-            listeAnimateurs.RemoveAll(a => a.Nom == nom && a.Prenom == prenom);
+            Animateur animateur = listeAnimateurs.FirstOrDefault(personne => personne.Nom == nom && personne.Prenom == prenom);
+            if(animateur != null)
+                ListeAnimateurs.Remove(animateur);
         }
         public void SaveAnime()
         {
-            var serializer = new XmlSerializer(typeof(List<Anime>));
-            using (var stream = new FileStream(pathAnimes, FileMode.Create))
+            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Anime>));
+
+            using (FileStream fileStream = new FileStream(pathAnimes, FileMode.Create))
             {
-                serializer.Serialize(stream, listeAnimes);
+                serializer.Serialize(fileStream, ListeAnimes);
             }
         }
         public void SaveAnimateur()
         {
-            var serializer = new XmlSerializer(typeof(List<Animateur>));
-            using (var stream = new FileStream(pathAnimateurs, FileMode.Create))
+            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Animateur>));
+
+            using (FileStream fileStream = new FileStream(pathAnimateurs, FileMode.Create))
             {
-                serializer.Serialize(stream, listeAnimateurs);
+                serializer.Serialize(fileStream, ListeAnimateurs);
             }
         }
 
         public void LoadAnime()
         {
-            var serializer = new XmlSerializer(typeof(List<Anime>));
-            using (var stream = new FileStream(pathAnimes, FileMode.Open))
+            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Anime>));
+
+            using (FileStream fileStream = new FileStream(pathAnimes, FileMode.Open))
             {
-                listeAnimes = (List<Anime>)serializer.Deserialize(stream);
+                ListeAnimes= (ObservableCollection<Anime>)serializer.Deserialize(fileStream);
             }
         }
         public void LoadAnimateur()
         {
-            var serializer = new XmlSerializer(typeof(List<Animateur>));
-            using (var stream = new FileStream(pathAnimateurs, FileMode.Open))
+            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Animateur>));
+
+            using (FileStream fileStream = new FileStream(pathAnimateurs, FileMode.Open))
             {
-                listeAnimateurs = (List<Animateur>)serializer.Deserialize(stream);
+                ListeAnimateurs = (ObservableCollection<Animateur>)serializer.Deserialize(fileStream);
             }
         }
 
         public void AfficherAllAnime()
         {
-            foreach (Anime anime in listeAnimes)
+            foreach (Anime anime in ListeAnimes)
             {
                 anime.Affiche();
             }
@@ -135,7 +146,7 @@ namespace ClasseMetier
 
         public void AfficherAllAnimateur()
         {
-            foreach (Animateur animateur in listeAnimateurs)
+            foreach (Animateur animateur in ListeAnimateurs)
             {
                 animateur.Affiche();
             }
@@ -143,13 +154,11 @@ namespace ClasseMetier
 
         private bool AnimateurPresent(string nom, string prenom)
         {
-            bool personneTrouvee = ListeAnimateurs.Any(p => p.Nom.Equals(nom) && p.Prenom.Equals(prenom));
-            return personneTrouvee;
+            return  ListeAnimateurs.Any(p => p.Nom.Equals(nom) && p.Prenom.Equals(prenom));
         }
         private bool AnimePresent(string nom, string prenom)
         {
-            bool personneTrouvee = ListeAnimes.Any(p => p.Nom.Equals(nom) && p.Prenom.Equals(prenom));
-            return personneTrouvee;
+            return ListeAnimes.Any(p => p.Nom.Equals(nom) && p.Prenom.Equals(prenom));
         }
     }
 }

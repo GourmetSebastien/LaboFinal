@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAnimateur xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Animateur>
+    <Nom>Gourmet</Nom>
+    <Prenom>Sebastien</Prenom>
+    <Datenaissance>2002-01-03T00:00:00</Datenaissance>
+    <Adresse>Rue des grands champs 85/23 4000 Liège</Adresse>
+    <Weekend1>false</Weekend1>
+    <Weekend2>false</Weekend2>
+    <Camp>false</Camp>
+    <Cotisation>false</Cotisation>
+    <Gsm>0470866366</Gsm>
+    <Fonction>Comptable</Fonction>
+  </Animateur>
+  <Animateur>
+    <Nom>Reuter</Nom>
+    <Prenom>Ylenia</Prenom>
+    <Datenaissance>2000-09-05T00:00:00</Datenaissance>
+    <Adresse>Verviers</Adresse>
+    <Weekend1>false</Weekend1>
+    <Weekend2>false</Weekend2>
+    <Camp>false</Camp>
+    <Cotisation>false</Cotisation>
+    <Gsm>04859652</Gsm>
+    <Fonction>Sista Besta</Fonction>
+  </Animateur>
+</ArrayOfAnimateur>
